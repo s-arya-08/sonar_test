@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions: read-all
     steps:
+      - name: Debugging Step
+        run: echo "SonarQube Server URL: $http://localhost:9099" ping -c 5 $SONARQUBE_URL
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
