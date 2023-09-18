@@ -34,8 +34,4 @@ jobs:
       - name: Debugging Step
         run: echo "SonarQube Server URL:http://localhost:9099" ping -c 5 http://localhost:9099
       
-      - name: Build and analyze
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sonar-example -Dsonar.projectName='sonar-example'
+      
