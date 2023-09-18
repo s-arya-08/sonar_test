@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: read-all
     steps:
-      - name: Debugging Step
-        run: echo "SonarQube Server URL: $http://localhost:9099" ping -c 5 $SONARQUBE_URL
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -33,6 +31,9 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Debugging Step
+        run: echo "SonarQube Server URL:http://localhost:9099" ping -c 5 http://localhost:9099
+      
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
